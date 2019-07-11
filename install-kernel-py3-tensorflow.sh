@@ -15,6 +15,7 @@ virtualenv --system-site-packages -p python3.7 ${installPath}
 source ${installPath}/bin/activate
 
 pip install --upgrade tensorflow
-pip install --upgrade ipykernel
+pip uninstall -y ipykernel
+pip install ipykernel
 
 python -m ipykernel install --user --name=py3-tensorflow

@@ -13,4 +13,5 @@ virtualenv --system-site-packages -p python3.7 ${pythonInstallPath}
 # activate python-runtime
 source ${pythonInstallPath}/bin/activate
 
-pip install --upgrade jupyter
+pip uninstall -y jupyter
+pip install jupyter
