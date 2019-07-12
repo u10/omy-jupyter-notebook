@@ -2,12 +2,27 @@
 
 runPath=$(cd "$(dirname "$0")"; pwd)
 
-cd ${runPath}
+installPath=${runPath}/kernels/nodejs
 
-source python-runtime/bin/activate
+function kernel_install {
+  cd ${runPath}
 
-mkdir -p kernels/nodejs
+  source python-runtime/bin/activate
 
-npm i -g ijavascript
+  mkdir -p kernels/nodejs
 
-ijsinstall --working-dir=${runPath}/kernels/nodejs
+  npm i -g ijavascript
+
+  ijsinstall --working-dir=$installPath
+}
+
+if [ $1 = '-t' ];then
+  if [ ! -e $installPath ]; then
+    kernel_install
+  fi
+  cd ${installPath}
+  export PS1="(nodejs) "
+  bash
+else
+  kernel_install
+fi
