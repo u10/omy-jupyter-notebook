@@ -29,9 +29,7 @@ EOF
   "language":"javascript"
 }
 EOF
-
-  echo $kernelPath
-  cat $kernelSpecPath/kernel.json
+  jupyter kernelspec list
 }
 
 kernel_install
